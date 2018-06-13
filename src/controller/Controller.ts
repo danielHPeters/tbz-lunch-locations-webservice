@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 
 /**
  * Api controller interface.
- * 
+ *
  * @author Daniel Peters
  * @version 1.0
  */

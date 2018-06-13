@@ -3,15 +3,11 @@ import Controller from '../../Controller'
 
 /**
  * User controller.
- * 
+ *
  * @author Daniel Peters
  * @version 1.0
  */
 export default class UserController implements Controller {
-  checkLogin (req: Request, res: Response, next: NextFunction): void {
-
-  }
-
   create (req: Request, res: Response, next: NextFunction): void {
 
   }
@@ -25,6 +21,14 @@ export default class UserController implements Controller {
   }
 
   update (req: Request, res: Response, next: NextFunction): void {
+
+  }
+
+  login (req: Request, res: Response, next: NextFunction): void {
+
+  }
+
+  passwordReset (req: Request, res: Response, next: NextFunction): void {
 
   }
 }
