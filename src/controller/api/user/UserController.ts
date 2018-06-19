@@ -28,7 +28,7 @@ export default class UserController implements Controller {
 
   }
 
-  passwordReset (req: Request, res: Response, next: NextFunction): void {
+  passwordUpdate (req: Request, res: Response, next: NextFunction): void {
 
   }
 }

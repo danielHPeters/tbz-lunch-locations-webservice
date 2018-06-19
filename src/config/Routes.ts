@@ -21,7 +21,7 @@ export default class Routes {
     app.route('/api/user').post(this.userController.create)
     app.route('/api/user/:id').put(this.userController.update)
     app.route('/api/user/login').post(this.userController.login)
-    app.route('/api/user/:id/password-reset').put(this.userController.passwordReset)
+    app.route('/api/user/:id/password/update').put(this.userController.passwordUpdate)
 
     // Location routes
     app.route('/api/location/:id').get(this.locationController.getById)

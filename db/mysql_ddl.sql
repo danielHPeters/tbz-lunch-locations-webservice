@@ -28,7 +28,10 @@ CREATE TABLE IF NOT EXISTS `rating` (
   `userId` VARCHAR (255) NOT NULL,
   `text` VARCHAR (255) NOT NULL,
   `stars` TINYINT UNSIGNED NOT NULL,
+  `user_id` VARCHAR (255) NOT NULL,
+  `location_id` VARCHAR (255) NOT NULL,
 
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`userID`) REFERENCES `user` (`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  FOREIGN KEY (`location_id`) REFERENCES `location` (`id`)
 );
