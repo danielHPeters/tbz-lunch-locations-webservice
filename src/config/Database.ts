@@ -1,8 +1,19 @@
 import * as Sequel from 'sequelize'
-import { Sequelize, LoggingOptions } from 'sequelize'
 
+/**
+ * Database configuration.
+ *
+ * @author Daniel Peters
+ * @version 1.0
+ */
 export default class Database {
-  static readonly uri: string = 'mysql://mysql:root@localhost:3306/tbz_lunch_locations_webservice'
-  static readonly options: LoggingOptions = { benchmark: true, logging: console.log }
-  static readonly orm: Sequelize = new Sequel(Database.uri, Database.options)
+  static readonly orm: Sequel.Sequelize = new Sequel({
+    database: 'tbz_lunch_locations_webservice',
+    username: 'root',
+    password: '',
+    dialect: 'mysql',
+    define: {
+      freezeTableName: true
+    }
+  })
 }

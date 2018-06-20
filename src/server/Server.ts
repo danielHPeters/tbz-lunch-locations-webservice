@@ -8,6 +8,7 @@ import * as favicon from 'serve-favicon'
 import * as logger from 'morgan'
 import * as createError from 'http-errors'
 import * as debug from 'debug'
+import Routes from '../config/Routes'
 
 /**
  * Server class.
@@ -18,6 +19,7 @@ import * as debug from 'debug'
 export class Server {
   app: express.Application
   httpServer: Http2Server
+  routes: Routes
   private port
 
   constructor () {
@@ -56,6 +58,7 @@ export class Server {
     this.app.use(bodyParser.urlencoded({ extended: false }))
     this.app.use(favicon(path.join(__dirname, '../../public/favicon/favicon.ico')))
     this.app.use(express.static(path.join(__dirname, '../../public')))
+    this.routes = new Routes(this.app)
 
     // catch 404 and forward to error handler
     this.app.use((req, res, next) => next(createError(404)))
@@ -70,7 +73,6 @@ export class Server {
       res.status(err.status || 500)
       res.render('error')
     })
-
     this.port = Server.normalizePort(process.env.PORT || '3000')
     this.app.set('port', this.port)
     this.httpServer.listen(this.port)
