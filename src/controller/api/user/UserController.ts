@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import Controller from '../../Controller'
 import User from '../../../model/User'
+import UUID from '../../../helper/UUID'
+import * as bcrypt from 'bcrypt'
 
 /**
  * User controller.
@@ -10,7 +12,14 @@ import User from '../../../model/User'
  */
 export default class UserController implements Controller {
   create (req: Request, res: Response, next: NextFunction): void {
-    User.create(req.body)
+    User.create({
+      id: UUID.random(),
+      password: bcrypt.hashSync(req.body.password, 8),
+      name: req.body.name,
+      lastName: req.body.lastName,
+      firstName: req.body.firstName,
+      email: req.body.email
+    })
       .then(response => res.json(response))
       .catch(err => res.json(err))
   }

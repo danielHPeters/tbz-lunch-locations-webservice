@@ -23,6 +23,7 @@ export class Server {
   private port
 
   constructor () {
+    debug('http')
     this.init()
   }
 
@@ -47,9 +48,10 @@ export class Server {
   }
 
   init (): void {
-    debug('tbz-lunch-locations-webservice:server')
     this.app = express()
     this.httpServer = http.createServer(this.app)
+    this.httpServer.on('error', this.onError.bind(this))
+    this.httpServer.on('listening', this.onListening.bind(this))
     this.app.set('views', path.join(__dirname, '../../views'))
     this.app.set('view engine', 'pug')
     this.app.use(logger('dev'))
@@ -76,8 +78,6 @@ export class Server {
     this.port = Server.normalizePort(process.env.PORT || '3000')
     this.app.set('port', this.port)
     this.httpServer.listen(this.port)
-    this.httpServer.on('error', this.onError.bind(this))
-    this.httpServer.on('listening', this.onListening.bind(this))
   }
 
   /**

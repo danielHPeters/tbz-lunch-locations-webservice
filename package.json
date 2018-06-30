@@ -8,17 +8,22 @@
     "start": "node bin/www"
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "client-sessions": "^0.8.0",
     "cookie-parser": "~1.4.3",
     "debug": "~3.1.0",
     "express": "~4.16.3",
     "http-errors": "^1.6.3",
+    "jsonwebtoken": "^8.3.0",
     "morgan": "~1.9.0",
     "mysql2": "^1.5.3",
     "node-sass-middleware": "0.11.0",
     "pug": "2.0.3",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.4",
     "@types/cookie-parser": "^1.4.1",
@@ -28,6 +33,7 @@
     "@types/mocha": "^5.2.2",
     "@types/sequelize": "^4.27.22",
     "@types/serve-favicon": "^2.2.30",
+    "@types/uuid": "^3.4.3",
     "awesome-typescript-loader": "^5.1.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
