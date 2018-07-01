@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import Controller from '../../Controller'
 import User from '../../../model/User'
-import UUID from '../../../helper/UUID'
 import * as bcrypt from 'bcrypt'
 
 /**
@@ -13,7 +12,6 @@ import * as bcrypt from 'bcrypt'
 export default class UserController implements Controller {
   create (req: Request, res: Response, next: NextFunction): void {
     User.create({
-      id: UUID.random(),
       password: bcrypt.hashSync(req.body.password, 8),
       name: req.body.name,
       lastName: req.body.lastName,
@@ -49,7 +47,12 @@ export default class UserController implements Controller {
   }
 
   login (req: Request, res: Response, next: NextFunction): void {
-    res.json({ message: 'Hello World!' })
+    User.findOne({ where: { email: req.body.email } })
+      .then(user => {
+        const valid = bcrypt.compareSync(req.body.password, user.password)
+        res.status(valid ? 200 : 403).json(valid ? user : new Error('Login Failed'))
+      })
+      .catch(error => res.status(403).json(error))
   }
 
   passwordUpdate (req: Request, res: Response, next: NextFunction): void {

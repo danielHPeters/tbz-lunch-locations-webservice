@@ -17,13 +17,13 @@ export default class LocationController implements Controller {
 
   getById (req: Request, res: Response, next: NextFunction): void {
     Location.findById(req.params.id)
-      .then(user => res.json(user))
+      .then(location => res.json(location))
       .catch(err => res.json(err))
   }
 
   getAll (req: Request, res: Response, next: NextFunction): void {
     Location.findAll()
-      .then(users => res.json(users))
+      .then(locations => res.json(locations))
       .catch(err => res.json(err))
   }
 

@@ -32,6 +32,8 @@ export default class Routes {
     //  Rating routes
     app.route('/api/rating/:id').get(this.ratingController.getById)
     app.route('/api/rating').get(this.ratingController.getAll)
+    app.route('/api/rating/user/:userId').get(this.ratingController.getByUserId)
+    app.route('/api/rating/location/:locationId').get(this.ratingController.getByLocationId)
     app.route('/api/rating').post(this.ratingController.create)
     app.route('/api/rating/:id').put(this.ratingController.update)
   }
