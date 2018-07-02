@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `createdAt` DATE NOT NULL,
   `updatedAt` DATE NOT NULL,
 
+  UNIQUE (`email`),
   PRIMARY KEY (`id`)
 );
 

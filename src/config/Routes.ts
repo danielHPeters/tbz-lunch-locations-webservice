@@ -4,7 +4,7 @@ import LocationController from '../controller/api/location/LocationController'
 import RatingController from '../controller/api/rating/RatingController'
 
 /**
- * Routes configuration.
+ * Routes configuration. All api endpoints are registered here.
  *
  * @author Daniel Peters
  * @version 1.0

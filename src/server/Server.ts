@@ -11,7 +11,7 @@ import * as debug from 'debug'
 import Routes from '../config/Routes'
 
 /**
- * Server class.
+ * Server class. The server uses a http2 server serving an Express application on top of it.
  *
  * @author Daniel Peters
  * @version 1.0
@@ -47,6 +47,9 @@ export class Server {
     return false
   }
 
+  /**
+   * Initialize server and middleware.
+   */
   init (): void {
     this.app = express()
     this.httpServer = http.createServer(this.app)

@@ -19,7 +19,7 @@ export default class UserController implements Controller {
       email: req.body.email
     })
       .then(response => res.json(response))
-      .catch(err => res.json(err))
+      .catch(err => res.status(500).json(err))
   }
 
   getById (req: Request, res: Response, next: NextFunction): void {

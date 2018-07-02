@@ -4,6 +4,10 @@ import { Request, Response, NextFunction } from 'express'
 import User from '../model/User'
 import Secrets from '../config/Secrets'
 
+/**
+ * Authenticator middleware.
+ * Uses JSON Webtokens. WIP
+ */
 export default class Authenticator {
   static authenticate (req: Request, res: Response, next: NextFunction) {
     User.findOne({ where: { email: req.body.email } })

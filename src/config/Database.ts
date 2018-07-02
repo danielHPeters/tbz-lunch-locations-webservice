@@ -1,7 +1,7 @@
 import * as Sequel from 'sequelize'
 
 /**
- * Database configuration.
+ * Database configuration and sequelize instance. Initialized on application startup.
  *
  * @author Daniel Peters
  * @version 1.0

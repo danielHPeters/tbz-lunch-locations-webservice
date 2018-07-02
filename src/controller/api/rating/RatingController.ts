@@ -24,11 +24,13 @@ export default class RatingController implements Controller {
   getByUserId (req: Request, res: Response, next: NextFunction): void {
     Rating.findAll({ where: { userId: req.params.userId } })
       .then(rating => res.json(rating))
+      .catch(err => res.json(err))
   }
 
   getByLocationId (req: Request, res: Response, next: NextFunction): void {
     Rating.findAll({ where: { locationId: req.params.locationId } })
       .then(rating => res.json(rating))
+      .catch(err => res.json(err))
   }
 
   getAll (req: Request, res: Response, next: NextFunction): void {
