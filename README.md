@@ -27,7 +27,7 @@ TBZLunchLocations app backend webservice.
 - GET /api/location -> Get all locations in JSON format
 - GET /api/location/{id} -> Get location by id in JSON format
 - POST /api/location -> Store new location
-- PUT /api/location/{id} -> Update location with given id.## Rating
+- PUT /api/location/{id} -> Update location with given id.
 
 ### Rating
 - GET /api/rating -> Get all ratings in JSON format
