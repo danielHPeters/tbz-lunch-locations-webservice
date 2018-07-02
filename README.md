@@ -21,7 +21,7 @@ TBZLunchLocations app backend webservice.
 - GET /api/user/{id} -> Get user by id in JSON format
 - POST /api/user -> Store new user
 - PUT /api/user/{id} -> Update user with given id.
-- PUT /api/user/{id}/password -> Update user password with given id. Currently not implemented. Only "Hello World response"
+- PUT /api/user/{id}/password -> Update user password with given id. Currently not implemented. Only "Hello World" response.
 
 ### Location
 - GET /api/location -> Get all locations in JSON format
