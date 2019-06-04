@@ -1,5 +1,5 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Dependencies Status](https://david-dm.org/danielHpeters/tbz-lunch-locations-webservice.svg)](https://david-dm.org/danielHpeters/tbz-lunch-locations-webservice.svg)  
+[![Dependencies Status](https://david-dm.org/danielHpeters/tbz-lunch-locations-webservice.svg)](https://david-dm.org/danielHpeters/tbz-lunch-locations-webservice.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/danielhpeters/tbz-lunch-locations-webservice/badge)](https://www.codefactor.io/repository/github/danielhpeters/tbz-lunch-locations-webservice)
 # tbz-lunch-locations-webservice
 TBZLunchLocations app backend webservice.
