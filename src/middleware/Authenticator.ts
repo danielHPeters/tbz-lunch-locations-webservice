@@ -12,10 +12,10 @@ export default class Authenticator {
   static authenticate (req: Request, res: Response, next: NextFunction) {
     User.findOne({ where: { email: req.body.email } })
       .then(user => {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
+        if (bcrypt.compareSync(req.body.password, user!.password)) {
           res.status(403).send({ auth: false, token: null })
         } else {
-          const token = jwt.sign({ id: user.id }, Secrets.apiKey, {
+          const token = jwt.sign({ id: user!.id }, Secrets.apiKey, {
             expiresIn: 86400 // expires in 24 hours
           })
 

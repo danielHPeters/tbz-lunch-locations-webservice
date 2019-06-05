@@ -9,6 +9,7 @@ import * as logger from 'morgan'
 import * as createError from 'http-errors'
 import * as debug from 'debug'
 import Routes from '../config/Routes'
+import Database from '../config/Database'
 
 /**
  * Server class. The server uses a http2 server serving an Express application on top of it.
@@ -20,10 +21,9 @@ export class Server {
   app: express.Application
   httpServer: Http2Server
   routes: Routes
-  private port
+  private port: number | string
 
   constructor () {
-    debug('http')
     this.init()
   }
 
@@ -31,7 +31,7 @@ export class Server {
     return new Server()
   }
 
-  static normalizePort (val) {
+  static normalizePort (val: any) {
     const port = parseInt(val, 10)
 
     if (isNaN(port)) {
@@ -51,6 +51,7 @@ export class Server {
    * Initialize server and middleware.
    */
   init (): void {
+    Database.init()
     this.app = express()
     this.httpServer = http.createServer(this.app)
     this.httpServer.on('error', this.onError.bind(this))
@@ -69,7 +70,7 @@ export class Server {
     this.app.use((req, res, next) => next(createError(404)))
 
     // error handler
-    this.app.use((err, req, res, next) => {
+    this.app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       // set locals, only providing error in development
       res.locals.message = err.message
       res.locals.error = req.app.get('env') === 'development' ? err : {}
@@ -86,7 +87,7 @@ export class Server {
   /**
    * Event listener for HTTP server "error" event.
    */
-  onError (error) {
+  onError (error: any) {
     if (error.syscall !== 'listen') {
       throw error
     }

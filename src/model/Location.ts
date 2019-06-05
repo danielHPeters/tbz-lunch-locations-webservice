@@ -1,41 +1,23 @@
-import * as Sequelize from 'sequelize'
-import Database from '../config/Database'
+import { Association, Model } from 'sequelize'
 import Rating from './Rating'
 
 /**
- * Location instance attributes.
- */
-export interface LocationAttributes {
-  id?: string,
-  name: string,
-  lat: number,
-  lng: number
-}
-
-/**
- * Location Model instance interface.
- */
-export interface LocationInstance extends Sequelize.Instance<LocationAttributes>, LocationAttributes {}
-
-/**
  * Location Model definition.
+ *
+ * @author Daniel Peters
+ * @version 1.1
  */
-const Location = Database.orm.define<LocationInstance, LocationAttributes>('location', {
-  id: { type: Sequelize.STRING, primaryKey: true, defaultValue: Sequelize.UUIDV4 },
-  name: Sequelize.STRING,
-  lat: {
-    type: Sequelize.DOUBLE,
-    allowNull: false
-  },
-  lng: {
-    type: Sequelize.DOUBLE,
-    allowNull: false
+export default class Location extends Model {
+  static readonly TABLE_NAME = 'locations'
+  id!: string
+  name!: string
+  lat!: number
+  lng!: number
+  readonly createdAt!: Date
+  readonly updatedAt!: Date
+  readonly ratings?: Rating[]
+
+  static associations: {
+    ratings: Association<Location, Rating>
   }
-})
-
-/**
- * Set relations (Rating object gets locationId.).
- */
-Location.hasMany(Rating)
-
-export default Location
+}

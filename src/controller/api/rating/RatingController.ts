@@ -16,7 +16,7 @@ export default class RatingController implements Controller {
   }
 
   getById (req: Request, res: Response, next: NextFunction): void {
-    Rating.findById(req.params.id)
+    Rating.findByPk(req.params.id)
       .then(rating => res.json(rating))
       .catch(err => res.json(err))
   }

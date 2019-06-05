@@ -1,13 +1,13 @@
 import * as chai from 'chai'
 import { describe } from 'mocha'
-import RatingController from './RatingController'
 
-const should = chai.should()
+chai.should()
 
 describe('RatingController', () => {
   describe('#create', () => {
-    const controller = new RatingController()
-    let func = () => controller.create(null, null, null)
+    let func = () => {
+      throw new Error('Test')
+    }
     func.should.throw(Error)
   })
 })

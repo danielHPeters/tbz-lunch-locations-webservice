@@ -23,7 +23,7 @@ export default class UserController implements Controller {
   }
 
   getById (req: Request, res: Response, next: NextFunction): void {
-    User.findById(req.params.id)
+    User.findByPk(req.params.id)
       .then(user => res.json(user))
       .catch(err => res.json(err))
   }
@@ -33,8 +33,16 @@ export default class UserController implements Controller {
       attributes: {
         exclude: ['password']
       }
-    }).then(users => res.json(users))
-      .catch(err => res.json(err))
+    }).then(users => {
+      console.log('Hi')
+      console.log(JSON.stringify(users))
+      res.json(users)
+    })
+      .catch(err => {
+        console.log('Hi')
+        console.log(err)
+        res.json(err)
+      })
   }
 
   update (req: Request, res: Response, next: NextFunction): void {
@@ -49,7 +57,7 @@ export default class UserController implements Controller {
   login (req: Request, res: Response, next: NextFunction): void {
     User.findOne({ where: { email: req.body.email } })
       .then(user => {
-        const valid = bcrypt.compareSync(req.body.password, user.password)
+        const valid = bcrypt.compareSync(req.body.password, user!.password)
         res.status(valid ? 200 : 403).json(valid ? user : new Error('Login Failed'))
       })
       .catch(error => res.status(403).json(error))

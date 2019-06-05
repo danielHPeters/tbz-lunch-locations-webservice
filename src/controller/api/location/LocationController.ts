@@ -16,7 +16,7 @@ export default class LocationController implements Controller {
   }
 
   getById (req: Request, res: Response, next: NextFunction): void {
-    Location.findById(req.params.id)
+    Location.findByPk(req.params.id)
       .then(location => res.json(location))
       .catch(err => res.json(err))
   }
